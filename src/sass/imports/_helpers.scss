@@ -1,4 +1,6 @@
 // Text for screen readers
+@use "sass:math";
+
 .screen-reader-text {
   clip: rect(1px, 1px, 1px, 1px);
   clip-path: polygon(0px 0px, 0px 0px, 0px 0px, 0px 0px);
@@ -38,27 +40,27 @@
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin-left: -$grid-gap / 2;
-  margin-right: -$grid-gap / 2;
+  margin-left: math.div(-$grid-gap, 2);
+  margin-right: math.div(-$grid-gap, 2);
 }
 
 .cell {
   box-sizing: border-box;
-  padding-left: $grid-gap / 2;
-  padding-right: $grid-gap / 2;
+  padding-left: math.div($grid-gap, 2);
+  padding-right: math.div($grid-gap, 2);
   position: relative;
   width: 100%;
 }
 
 @media only screen and (max-width: 750px) {
   .grid {
-    margin-left: -$container-padding / 2;
-    margin-right: -$container-padding / 2;
+    margin-left: math.div(-$container-padding, 2);
+    margin-right: math.div(-$container-padding, 2);
   }
   
   .cell {
-    padding-left: $container-padding / 2;
-    padding-right: $container-padding / 2;
+    padding-left: math.div($container-padding, 2);
+    padding-right: math.div($container-padding, 2);
   }
 }
 

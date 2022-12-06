@@ -1,9 +1,9 @@
 import React from 'react';
-import parse from 'html-react-parser';
+import parse, { domToReact } from 'html-react-parser';
 import Link from './link';
 import _ from 'lodash';
 
-const convertChildren = (children, index) => parse(children);
+const convertChildren = (children) => domToReact(children);
 
 export default function htmlToReact(html) {
     if (!html) {
@@ -17,8 +17,8 @@ export default function htmlToReact(html) {
                 // use Link only if there are no custom attributes like style, class, and what's not that might break react
                 if (_.isEmpty(props)) {
                     return (
-                        <Link key={index} href={href} {...props}>
-                            {convertChildren(node.children, index)}
+                        <Link href={href} {...props}>
+                            {convertChildren(node.children)}
                         </Link>
                     );
                 }
